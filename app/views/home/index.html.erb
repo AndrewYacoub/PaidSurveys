@@ -1,0 +1,171 @@
+
+<style>
+
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #000;
+    padding: 10px 15px;
+}
+
+.carousel-item img {
+    height: 300px;
+}
+
+.card-header {
+    background-color: #28a745;
+    color: white;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
+.list-group-item.active {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.social-icons a {
+    font-size: 20px;
+}
+
+</style>
+    <div class="container my-4">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="https://via.placeholder.com/800x300" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="https://via.placeholder.com/800x300" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="https://via.placeholder.com/800x300" alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <div class="card my-4">
+            <div class="card-header bg-success text-white">
+                Categories we target to survey
+            </div>
+            <div class="card-body">
+                Some quick example text to build on the card title and make up the bulk of the card's content.
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between mb-4">
+            <button class="btn btn-outline-success">Healthcare</button>
+            <button class="btn btn-outline-secondary">Software</button>
+            <button class="btn btn-outline-secondary">Automobile</button>
+            <button class="btn btn-outline-secondary">Banking</button>
+            <button class="btn btn-outline-secondary">Manufacturing</button>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group" id="list-tab" role="tablist">
+                    <a class="list-group-item list-group-item-action active" id="list-product1-list" data-toggle="list" href="#list-product1" role="tab">Product 1</a>
+                    <a class="list-group-item list-group-item-action" id="list-product2-list" data-toggle="list" href="#list-product2" role="tab">Product 2</a>
+                    <a class="list-group-item list-group-item-action" id="list-product3-list" data-toggle="list" href="#list-product3" role="tab">Product 3</a>
+                    <a class="list-group-item list-group-item-action" id="list-product4-list" data-toggle="list" href="#list-product4" role="tab">Product 4</a>
+                    <a class="list-group-item list-group-item-action" id="list-product5-list" data-toggle="list" href="#list-product5" role="tab">Product 5</a>
+                    <a class="list-group-item list-group-item-action" id="list-product6-list" data-toggle="list" href="#list-product6" role="tab">Product 6</a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-product1" role="tabpanel">
+                        <h5>Product 1</h5>
+                        <p>Ex consequat commodo adipisicing exercitation aute excepteur occaecat ullamco duis aliqua id magna ullamco eu.</p>
+                        <button class="btn btn-success">Express your opinion</button>
+                        <button class="btn btn-secondary">Share</button>
+                    </div>
+                    <div class="tab-pane fade" id="list-product2" role="tabpanel">
+                        <h5>Product 2</h5>
+                        <p>Another product description goes here.</p>
+                        <button class="btn btn-success" ><a href="<%= products_show_path%>"> Express your opinion </a></button>
+                        <button class="btn btn-secondary">Share</button>
+                    </div>
+                    <div class="tab-pane fade" id="list-product3" role="tabpanel">
+                        <h5>Product 3</h5>
+                        <p>Another product description goes here.</p>
+                        <button class="btn btn-success">Express your opinion</button>
+                        <button class="btn btn-secondary">Share</button>
+                    </div>
+                    <div class="tab-pane fade" id="list-product4" role="tabpanel">
+                        <h5>Product 4</h5>
+                        <p>Another product description goes here.</p>
+                        <button class="btn btn-success">Express your opinion</button>
+                        <button class="btn btn-secondary">Share</button>
+                    </div>
+                    <div class="tab-pane fade" id="list-product5" role="tabpanel">
+                        <h5>Product 5</h5>
+                        <p>Another product description goes here.</p>
+                        <button class="btn btn-success">Express your opinion</button>
+                        <button class="btn btn-secondary">Share</button>
+                    </div>
+                    <div class="tab-pane fade" id="list-product6" role="tabpanel">
+                        <h5>Product 6</h5>
+                        <p>Another product description goes here.</p>
+                        <button class="btn btn-success">Express your opinion</button>
+                        <button class="btn btn-secondary">Share</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card my-4" id="about_us">
+            <div class="card-body">
+                <h5 class="card-title">About us</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Subtitle here</h6>
+                <p class="card-text">I'm a thing. But, like most politicians, he promised more than he could deliver...</p>
+                <a href="#" class="btn btn-success">See More</a>
+                <a href="#" class="btn btn-secondary">Share</a>
+            </div>
+        </div>
+
+        <div class="card my-4" id="why_us">
+            <div class="card-body">
+                <h5 class="card-title">Why Us</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Subtitle here</h6>
+                <p class="card-text">I'm a thing. But, like most politicians, he promised more than he could deliver...</p>
+                <a href="#" class="btn btn-success">See More</a>
+                <a href="#" class="btn btn-secondary">Share</a>
+            </div>
+        </div>
+
+        <div class="card my-4" id="how_it_works">
+            <div class="card-body">
+                <h5 class="card-title">How It Works</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Subtitle here</h6>
+                <p class="card-text">I'm a thing. But, like most politicians, he promised more than he could deliver...</p>
+                <a href="#" class="btn btn-success">See More</a>
+                <a href="#" class="btn btn-secondary">Share</a>
+            </div>
+        </div>
+
+        <div class="card my-4" id="for_you">
+            <div class="card-body">
+                <h5 class="card-title">What Is In For You</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Subtitle here</h6>
+                <p class="card-text">I'm a thing. But, like most politicians, he promised more than he could deliver...</p>
+                <a href="#" class="btn btn-success">See More</a>
+                <a href="#" class="btn btn-secondary">Share</a>
+            </div>
+        </div>
+    </div>
+

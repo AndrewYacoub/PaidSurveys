@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <%= link_to 'PaidSurveys', root_path, class: 'navbar-brand text-white' %>
+      <ul class="navbar-nav  mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link text-white" href="<%= home_about_us_path %>">About US</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="<%= home_why_us_path %>">Why Us</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="<%= home_how_it_works_path %>">How It Works</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="<%= home_for_you_path %>">What Is In For You</a></li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% unless current_user %>
+        <li class="nav-item">
+          <%= link_to 'Login', new_user_session_path, class: 'nav-link text-white' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-success ml-2' %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+          <%= button_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-white' %>
+        </li>
+        <%end%>
+        <ul>
+    </div>
+  </div>
+</nav>

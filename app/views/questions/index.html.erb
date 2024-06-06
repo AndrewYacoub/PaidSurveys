@@ -1,0 +1,23 @@
+<!-- app/views/questions/index.html.erb -->
+<h1>Questions for <%= @survey.title %></h1>
+<%= link_to 'New Question', new_category_product_survey_question_path(@category, @product, @survey), class: 'btn btn-primary' %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.content %></td>
+        <td><%= link_to 'Show', category_product_survey_question_path(@category, @product, @survey, question), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Edit', edit_category_product_survey_question_path(@category, @product, @survey, question), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Destroy', category_product_survey_question_path(@category, @product, @survey, question), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back to Survey', category_product_survey_path(@category, @product, @survey), class: 'btn btn-secondary' %>

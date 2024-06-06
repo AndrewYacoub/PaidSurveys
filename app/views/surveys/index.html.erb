@@ -1,0 +1,34 @@
+<!-- app/views/surveys/index.html.erb -->
+<h1>Surveys</h1>
+
+<%= link_to 'New Survey', new_category_product_survey_path(@category, @product), class: 'btn btn-primary' %>
+<%= link_to 'Back to Product', category_product_path(@category, @product), class: 'btn btn-secondary' %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Reward</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Active</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @surveys.each do |survey| %>
+      <tr>
+        <td><%= survey.title %></td>
+        <td><%= survey.description %></td>
+        <td><%= survey.reward %></td>
+        <td><%= survey.start_date %></td>
+        <td><%= survey.end_date %></td>
+        <td><%= survey.active %></td>
+        <td><%= link_to 'Show', category_product_survey_path(@category, @product, survey), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Edit', edit_category_product_survey_path(@category, @product, survey), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Destroy', category_product_survey_path(@category, @product, survey), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

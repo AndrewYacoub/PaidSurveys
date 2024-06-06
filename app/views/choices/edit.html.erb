@@ -1,0 +1,4 @@
+<!-- app/views/choices/edit.html.erb -->
+<h1>Edit Choice</h1>
+<%= render 'form', choice: @choice %>
+<%= link_to 'Back to Choices', category_product_survey_question_choices_path(@category, @product, @survey, @question), class: 'btn btn-secondary' %>

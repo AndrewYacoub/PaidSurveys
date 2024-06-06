@@ -1,0 +1,60 @@
+
+<div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Register</h5>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+                <div class="form-group">
+                    <label for="fullName">Full name</label>
+                    <input type="text" class="form-control" id="fullName" placeholder="Essam Ali">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" placeholder="25">
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select class="form-control" id="gender">
+                        <option>F</option>
+                        <option>M</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="occupation">Occupation</label>
+                    <select class="form-control" id="occupation">
+                        <option>Unemployed</option>
+                        <option>Employed</option>
+                        <option>Student</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="education">Education</label>
+                    <select class="form-control" id="education">
+                        <option>Undergraduate</option>
+                        <option>Graduate</option>
+                        <option>Postgraduate</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <%= f.label :email %><br />
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control", id:"email", placeholder:"email@example.com" %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :password %>
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br />
+                    <%= f.password_field :password, autocomplete: "new-password",class:"form-control", id:"password", placeholder:"Password" %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :password_confirmation %><br />
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", id:"confirmPassword", placeholder:"Password" %>
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="terms">
+                    <label class="form-check-label" for="terms">I agree with terms & conditions</label>
+                </div>
+                  <%= f.submit "Register", class:"btn btn-success" %>
+            <% end %>
+          </div>
+    </div>

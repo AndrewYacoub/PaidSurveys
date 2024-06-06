@@ -1,0 +1,13 @@
+<h1><%= @product.name %></h1>
+<p><strong>Description:</strong> <%= @product.description %></p>
+<%= link_to 'Edit', edit_category_product_path(@product.category, @product), class: 'btn btn-warning' %>
+<%= link_to 'Back', categories_path(@product.category), class: 'btn btn-secondary' %>
+<%= link_to 'New Survey', new_category_product_survey_path(@product.category, @product), class: 'btn btn-primary' %>
+
+<h2>Surveys</h2>
+<% @product.surveys.each do |survey| %>
+  <div>
+    <h3><%= link_to survey.title, category_product_survey_path(@product.category, @product, survey) %></h3>
+    <p><%= survey.description %></p>
+  </div>
+<% end %>

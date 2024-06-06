@@ -1,0 +1,24 @@
+<!-- app/views/wallets/_form.html.erb -->
+<%= form_with(model: @wallet, url: @wallet.persisted? ? wallet_path : wallet_path, local: true) do |form| %>
+  <% if @wallet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wallet.errors.count, "error") %> prohibited this wallet from being saved:</h2>
+      <ul>
+        <% @wallet.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :provider %>
+    <%= form.text_field :provider %>
+  </div>
+    <div class="field">
+    <%= form.label :wallet_number %>
+    <%= form.number_field :wallet_number %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

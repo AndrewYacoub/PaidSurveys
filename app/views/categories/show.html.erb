@@ -1,0 +1,17 @@
+<!-- app/views/categories/show.html.erb -->
+<!-- app/views/categories/show.html.erb -->
+<h1><%= @category.name %></h1>
+
+<%= link_to 'Edit', edit_category_path(@category), class: 'btn btn-warning' %>
+<%= link_to 'Back', categories_path, class: 'btn btn-secondary' %>
+<%= link_to 'New Product', new_category_product_path(@category), class: 'btn btn-primary' %>
+
+<h2>Products</h2>
+<ul>
+  <% @category.products.each do |product| %>
+    <li>
+      <h3><%= link_to product.name, category_product_path(@category, product) %></h3>
+      <p><%= product.description %></p>
+    </li>
+  <% end %>
+</ul>

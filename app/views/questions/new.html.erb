@@ -1,0 +1,4 @@
+<!-- app/views/questions/new.html.erb -->
+<h1>New Question for <%= @survey.title %></h1>
+<%= render 'form', question: @question %>
+<%= link_to 'Back to Questions', category_product_survey_questions_path(@category, @product, @survey), class: 'btn btn-secondary' %>

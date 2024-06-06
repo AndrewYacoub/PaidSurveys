@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  category: one
+  title: MyString
+  description: MyText
+  reward: 9.99
+  start_date: 2024-06-05 22:10:05
+  end_date: 2024-06-05 22:10:05
+  active: false
+
+two:
+  user: two
+  category: two
+  title: MyString
+  description: MyText
+  reward: 9.99
+  start_date: 2024-06-05 22:10:05
+  end_date: 2024-06-05 22:10:05
+  active: false

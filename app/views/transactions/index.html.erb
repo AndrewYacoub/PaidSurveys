@@ -1,0 +1,29 @@
+<!-- app/views/transactions/index.html.erb -->
+<h1>Transactions</h1>
+<%= link_to 'New Transaction', new_transaction_path, class: 'btn btn-primary' %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Sender</th>
+      <th>Receiver</th>
+      <th>Amount</th>
+      <th>Transaction Type</th>
+      <th>Payment Method</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.sender.name %></td>
+        <td><%= transaction.receiver.name %></td>
+        <td><%= transaction.amount %></td>
+        <td><%= transaction.transaction_type %></td>
+        <td><%= transaction.payment_method %></td>
+        <td><%= transaction.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back to Profile', profile_path, class: 'btn btn-secondary' %>

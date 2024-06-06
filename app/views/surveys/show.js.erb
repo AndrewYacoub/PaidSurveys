@@ -1,0 +1,2 @@
+<!-- app/views/surveys/show.js.erb -->
+document.getElementById('survey-details').innerHTML = "<%= j render partial: 'surveys/show', locals: { survey: @survey, category: @category, product: @product } %>";

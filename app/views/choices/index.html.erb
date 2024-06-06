@@ -1,0 +1,23 @@
+<!-- app/views/choices/index.html.erb -->
+<h1>Choices for <%= @question.content %></h1>
+<%= link_to 'New Choice', new_category_product_survey_question_choice_path(@category, @product, @survey, @question), class: 'btn btn-primary' %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Correct</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @choices.each do |choice| %>
+      <tr>
+        <td><%= choice.content %></td>
+        <td><%= link_to 'Edit', edit_category_product_survey_question_choice_path(@category, @product, @survey, @question, choice), class: 'btn btn-warning' %></td>
+        <td><%= link_to 'Destroy', category_product_survey_question_choice_path(@category, @product, @survey, @question, choice), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back to Question', category_product_survey_question_path(@category, @product, @survey, @question), class: 'btn btn-secondary' %>

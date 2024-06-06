@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PaidSurveys</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'products', 'data-turbolinks-track': 'reload' %>
+
+
+  </head>
+<style>
+
+  html, body {
+            height: 100vh;
+        }
+
+  body {
+        display: flex;
+        flex-direction: column;
+  }
+  footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      width: 100%;
+  }
+  footer a {
+      color: #fff;
+      text-decoration: none;
+  }
+  footer a:hover {
+      text-decoration: underline;
+  }
+  </style>
+  <body>
+    <%= render 'layouts/navbar' %>
+    
+    <div class="container">
+      <br>
+      <% if notice%>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <p><%= notice %></p>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <%elsif alert%>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+       <p><%= alert %></p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <%end%>
+    <%= yield %>
+    </div>
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Your partner for raising income</h5>
+                    <p>Listen to your favorite artists and albums whenever wherever online and offline.</p>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Service features</a></li>
+                        <li><a href="#" class="text-white">Pricing Policy</a></li>
+                        <li><a href="#" class="text-white">Money Trading Policy</a></li>
+                        <li><a href="#" class="text-white">Data Privacy Policy</a></li>
+                        <li><a href="#" class="text-white">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Listen to your favorite artists and albums whenever wherever online and offline.</p>
+                    <p>Phone: 0502233951</p>
+                    <p>Email: paid@survey.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Social Media</h5>
+                    <p>Listen to your favorite artists and albums whenever wherever online and offline.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white mr-2"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="text-white mr-2"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
