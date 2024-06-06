@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_05_225219) do
+ActiveRecord::Schema.define(version: 2024_06_06_111711) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -60,6 +60,9 @@ ActiveRecord::Schema.define(version: 2024_06_05_225219) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "target_group"
+    t.string "about_publisher"
+    t.decimal "price"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
@@ -82,6 +85,19 @@ ActiveRecord::Schema.define(version: 2024_06_05_225219) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["survey_id"], name: "index_questions_on_survey_id"
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "survey_id", null: false
+    t.integer "choice_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "question_id", null: false
+    t.index ["choice_id"], name: "index_responses_on_choice_id"
+    t.index ["question_id"], name: "index_responses_on_question_id"
+    t.index ["survey_id"], name: "index_responses_on_survey_id"
+    t.index ["user_id"], name: "index_responses_on_user_id"
   end
 
   create_table "surveys", force: :cascade do |t|
@@ -146,6 +162,10 @@ ActiveRecord::Schema.define(version: 2024_06_05_225219) do
   add_foreign_key "products", "categories"
   add_foreign_key "profiles", "users"
   add_foreign_key "questions", "surveys"
+  add_foreign_key "responses", "choices"
+  add_foreign_key "responses", "questions"
+  add_foreign_key "responses", "surveys"
+  add_foreign_key "responses", "users"
   add_foreign_key "surveys", "categories"
   add_foreign_key "surveys", "products"
   add_foreign_key "surveys", "users"

@@ -21,11 +21,7 @@ class SurveysController < ApplicationController
     @category = Category.find(params[:category_id])
     @product = @category.products.find(params[:product_id])
     @survey = @product.surveys.find(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @questions = @survey.questions.includes(:choices)
   end
 
   def create

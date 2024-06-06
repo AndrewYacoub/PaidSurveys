@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resource :profile, only: [:show, :edit, :update]
-  resource :bank_accounts, only: [:new, :create, :edit, :update]
-  resource :wallet, only: [:new, :create, :edit, :update, :destroy]
+  resources :profiles, only: [:show, :edit, :update]
+  resources :bank_accounts, only: [:new, :create, :edit, :update]
+  resources :wallets, only: [:new, :create, :edit, :update, :destroy]
   resources :transactions, only: [:index, :show, :new, :create]
   resources :categories, only: [:index] do 
     member do
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
     resources :products do
       resources :surveys do
+        resources :responses, only: [:create]
         resources :questions do
           resources :choices
         end
