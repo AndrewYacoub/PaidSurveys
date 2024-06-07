@@ -1,0 +1,58 @@
+<div class="container mt-4">
+    <h2>Notifications</h2>
+
+    <ul class="nav nav-tabs" id="notificationTabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="categories-tab" data-toggle="tab" href="#categories" role="tab" aria-controls="categories" aria-selected="true">New Categories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="products-tab" data-toggle="tab" href="#products" role="tab" aria-controls="products" aria-selected="false">New Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="surveys-tab" data-toggle="tab" href="#surveys" role="tab" aria-controls="surveys" aria-selected="false">New Surveys</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="filled-surveys-tab" data-toggle="tab" href="#filled-surveys" role="tab" aria-controls="filled-surveys" aria-selected="false">Filled Surveys</a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="notificationTabsContent">
+      <div class="tab-pane fade show active" id="categories" role="tabpanel" aria-labelledby="categories-tab">
+        <div class="content mt-3">
+          <ul>
+            <% @categories.each do |category| %>
+              <li><%= category.name %> - Created at: <%= category.created_at %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">
+        <div class="content mt-3">
+          <ul>
+            <% @products.each do |product| %>
+              <li><%= product.name %> - Created at: <%= product.created_at %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="surveys" role="tabpanel" aria-labelledby="surveys-tab">
+        <div class="content mt-3">
+          <ul>
+            <% @surveys.each do |survey| %>
+              <li><%= survey.title %> - Created at: <%= survey.created_at %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="filled-surveys" role="tabpanel" aria-labelledby="filled-surveys-tab">
+        <div class="content mt-3">
+          <ul>
+            <% @filled_surveys.each do |response| %>
+              <li><h5><%= response.user.name %> </h5> filled <%= response.survey.title %> - Submitted at: <%= response.created_at %></li>
+            <br>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
