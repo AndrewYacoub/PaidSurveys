@@ -1,0 +1,34 @@
+  <style>
+
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+  </style>
+<div class="container mt-4">
+
+<div class="content">
+  <div id="products-surveyed">
+    <h2>Products I Surveyed</h2>
+    <% if @answered_surveys.any? %>
+      <% @answered_surveys.each do |survey| %>
+        <div class="card mt-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= survey.title %></h5>
+            <p class="card-text"><%= survey.description %></p>
+            <p><strong>Price:</strong> <%= survey.reward %></p>
+            <p><strong>Start at:</strong> <%= survey.start_date %> <strong>End at:</strong> <%= survey.end_date %></p>
+            <p><strong>Submitted at:</strong> ........</p>
+            <%= link_to 'View Survey', category_product_survey_path(survey.product.category, survey.product, survey), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>You have not surveyed any products yet.</p>
+    <% end %>
+  </div>
+  <!-- Additional tabs content goes here -->
+</div>
+
+
+</div>

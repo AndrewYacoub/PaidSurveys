@@ -6,11 +6,11 @@ class User < ApplicationRecord
   has_one :profile
   has_many :bank_accounts
   has_many :wallets
-  has_many :surveys
   has_many :opinions
   has_one :wallet, dependent: :destroy
   has_one :bank_account, dependent: :destroy
-
+  has_many :responses, dependent: :destroy
+  has_many :surveys, through: :responses
   accepts_nested_attributes_for :wallet, allow_destroy: true
   accepts_nested_attributes_for :bank_account, allow_destroy: true
 

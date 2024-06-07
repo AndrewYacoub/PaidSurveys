@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'dashboard', to: 'dashboard#index', as: 'dashboard'
+  get 'dashboard/payment_methods', to: 'dashboard#payment_methods', as: 'payment_methods'
+  get 'surveys/created', to: 'surveys#created', as: 'created_surveys'
+
   resources :profiles, only: [:show, :edit, :update]
   resources :bank_accounts, only: [:new, :create, :edit, :update]
   resources :wallets, only: [:new, :create, :edit, :update, :destroy]

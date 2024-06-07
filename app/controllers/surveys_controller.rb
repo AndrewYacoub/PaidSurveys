@@ -1,9 +1,8 @@
 # app/controllers/surveys_controller.rb
 class SurveysController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_category
-  before_action :set_product
-  before_action :set_survey, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_category, except: [:index, :show, :new, :edit, :create, :update, :destroy, :created]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @surveys = @product.surveys
@@ -37,6 +36,19 @@ class SurveysController < ApplicationController
     end
   end
 
+ def created
+    @surveys = current_user.surveys
+
+    if params[:search].present?
+      @surveys = @surveys.where('title LIKE ? OR product_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
+    end
+
+    if params[:status].present?
+      @surveys = @surveys.where(active: params[:status] == 'activated')
+    end
+
+  end
+
   def update
     if @survey.update(survey_params)
       redirect_to category_product_survey_path(@category, @product, @survey), notice: 'Survey was successfully updated.'
@@ -57,7 +69,7 @@ class SurveysController < ApplicationController
   end
 
   def set_product
-    @product = @category.products.find(params[:product_id])
+    @product = Product.find(params[:product_id])
   end
 
   def set_survey

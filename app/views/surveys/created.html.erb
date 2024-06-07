@@ -1,0 +1,43 @@
+ <style>
+    .content {
+      padding: 20px;
+      margin-top: 56px; /* Adjust based on navbar height */
+    }
+  </style>
+<div class="container mt-4">
+    <h2>All Surveys</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Survey Name</th>
+          <th>Product Name</th>
+          <th>Target Group</th>
+          <th>Status</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @surveys.each do |survey| %>
+          <tr>
+            <td><%= survey.id %></td>
+            <td><%= survey.start_date %></td>
+            <td><%= survey.end_date %></td>
+            <td><%= survey.title %></td>
+            <td><%= survey.product.name %></td>
+            <td><%= survey.product.target_group %></td>
+            <td><%= survey.active ? 'Activated' : 'Deactivated' %></td>
+            <td><%= survey.reward %></td>
+            <td>
+              <%= link_to 'View', category_product_survey_path(survey.product.category, survey.product, survey), class: 'btn btn-info btn-sm' %>
+              <%= link_to 'Delete', category_product_survey_path(survey.product.category, survey.product, survey), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+              <%= link_to 'Edit', edit_category_product_survey_path(survey.product.category, survey.product, survey), class: 'btn btn-warning btn-sm' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>

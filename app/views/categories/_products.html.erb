@@ -1,4 +1,5 @@
 <!-- app/views/categories/_products.html.erb -->
+<%if current_user%>
 <% if products.any? %>
   <ul class="list-group">
     <% products.each do |product| %>
@@ -10,3 +11,6 @@
 <% else %>
   <div class="alert alert-info">No products available for this category.</div>
 <% end %>
+<%else%>
+  <div class="alert alert-info">Please sign in to see all the products</div>
+<%end%>
