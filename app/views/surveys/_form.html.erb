@@ -1,40 +1,54 @@
-<!-- app/views/surveys/_form.html.erb -->
-<%= form_with(model: [@category, @product, survey], local: true) do |form| %>
-  <% if survey.errors.any? %>
+<%= form_with(model: [@category, @product, @survey], local: true, url: category_product_surveys_path(@category, @product)) do |form| %>
+  <% if @survey.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+      <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
       <ul>
-        <% survey.errors.full_messages.each do |message| %>
+        <% @survey.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-  <div class="field">
+
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
-  <div class="field">
+
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: "form-control" %>
   </div>
-  <div class="field">
+
+  <div class="form-group">
+    <%= form.label :about_publisher %>
+    <%= form.text_area :about_publisher, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :target_group %>
+    <%= form.text_area :target_group, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :reward %>
     <%= form.number_field :reward %>
   </div>
-  <div class="field">
+
+  <div class="form-group">
     <%= form.label :start_date %>
-    <%= form.datetime_select :start_date %>
+    <%= form.datetime_select :start_date, class: "form-control" %>
   </div>
-  <div class="field">
+
+  <div class="form-group">
     <%= form.label :end_date %>
-    <%= form.datetime_select :end_date %>
+    <%= form.datetime_select :end_date, class: "form-control" %>
   </div>
-  <div class="field">
+
+  <div class="form-group">
     <%= form.label :active %>
     <%= form.check_box :active %>
   </div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
+  <%= form.submit "Save", class: "btn btn-primary" %>
 <% end %>

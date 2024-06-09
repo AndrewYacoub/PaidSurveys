@@ -2,16 +2,15 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
-  before_action :set_category, except: [:index, :show, :new, :edit, :create, :update, :destroy, :created]
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, except: [:index, :show, :edit, :create, :update, :destroy, :created]
+  before_action :set_product, only: [:new, :show, :edit, :update, :destroy]
 
   def index
     @surveys = @product.surveys
   end
 
   def new
-    @survey = @product.surveys.build
-    @survey.questions.build  # Build an initial question for the form
+    @survey = Survey.new
   end
 
   def edit
@@ -29,13 +28,14 @@ class SurveysController < ApplicationController
   def create
     @category = Category.find(params[:category_id])
     @product = @category.products.find(params[:product_id])
-    @survey = @product.surveys.find(params[:survey_id])
+    @survey = @product.surveys.new(survey_params)
+    @survey.category = @category
+    @survey.user = current_user
 
-
-    if @response.save
-      redirect_to category_product_path(@category, @product), notice: 'Survey response submitted successfully.'
+    if @survey.save
+      redirect_to [@category, @product, @survey], notice: 'Survey was successfully created.'
     else
-      render :show
+      render :new
     end
   end
 
@@ -80,7 +80,7 @@ class SurveysController < ApplicationController
   end
 
   def survey_params
-    params.require(:survey).permit(:title, :description, :reward, :start_date, :end_date, :active, questions_attributes: [:id, :content, :_destroy])
+    params.require(:survey).permit(:title,:target_group, :about_publisher, :description, :reward, :start_date, :end_date, :active, questions_attributes: [:id, :content, :_destroy])
   end
 
   def response_params

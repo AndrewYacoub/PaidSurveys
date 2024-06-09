@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :bank_accounts, only: [:new, :create, :edit, :update]
   resources :wallets, only: [:new, :create, :edit, :update, :destroy]
   resources :transactions, only: [:index, :show, :new, :create]
-  resources :categories, only: [:index] do 
+  resources :categories do 
     member do
       get 'show_products'
     end

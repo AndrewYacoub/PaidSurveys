@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_09_141059) do
+ActiveRecord::Schema.define(version: 2024_06_09_210202) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -60,8 +60,6 @@ ActiveRecord::Schema.define(version: 2024_06_09_141059) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "target_group"
-    t.string "about_publisher"
     t.decimal "price"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
@@ -112,6 +110,8 @@ ActiveRecord::Schema.define(version: 2024_06_09_141059) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "product_id", null: false
+    t.text "about_publisher"
+    t.text "target_group"
     t.index ["category_id"], name: "index_surveys_on_category_id"
     t.index ["product_id"], name: "index_surveys_on_product_id"
     t.index ["user_id"], name: "index_surveys_on_user_id"

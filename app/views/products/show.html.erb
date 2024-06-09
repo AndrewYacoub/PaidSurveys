@@ -4,10 +4,6 @@
     <div class="card-body">
       <h2><%= @product.name %></h2>
       <p><%= @product.description %></p>
-      <h4>Target Group</h4>
-      <p><%= @product.target_group %></p>
-      <h4>About Publisher</h4>
-      <p><%= @product.about_publisher %></p>
       <h4>Price</h4>
       <p><%= @product.price %> $</p>
       <%= link_to 'Back to Category', categories_path(@category), class: 'btn btn-secondary' %>
