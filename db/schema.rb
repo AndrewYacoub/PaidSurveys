@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_06_111711) do
+ActiveRecord::Schema.define(version: 2024_06_07_182654) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -119,14 +119,13 @@ ActiveRecord::Schema.define(version: 2024_06_06_111711) do
 
   create_table "transactions", force: :cascade do |t|
     t.integer "user_id", null: false
+    t.integer "survey_id", null: false
     t.decimal "amount"
-    t.string "transaction_type"
+    t.string "payment_method"
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "sender_id"
-    t.integer "receiver_id"
-    t.string "payment_method"
+    t.index ["survey_id"], name: "index_transactions_on_survey_id"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
@@ -169,6 +168,7 @@ ActiveRecord::Schema.define(version: 2024_06_06_111711) do
   add_foreign_key "surveys", "categories"
   add_foreign_key "surveys", "products"
   add_foreign_key "surveys", "users"
+  add_foreign_key "transactions", "surveys"
   add_foreign_key "transactions", "users"
   add_foreign_key "wallets", "users"
 end

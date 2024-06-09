@@ -1,9 +1,0 @@
-<!-- app/views/transactions/show.html.erb -->
-<h1>Transaction Details</h1>
-<p><strong>Sender:</strong> <%= @transaction.sender.name %></p>
-<p><strong>Receiver:</strong> <%= @transaction.receiver.name %></p>
-<p><strong>Amount:</strong> <%= @transaction.amount %></p>
-<p><strong>Transaction Type:</strong> <%= @transaction.transaction_type %></p>
-<p><strong>Payment Method:</strong> <%= @transaction.payment_method %></p>
-<p><strong>Date:</strong> <%= @transaction.created_at %></p>
-<%= link_to 'Back to Transactions', transactions_path, class: 'btn btn-secondary' %>

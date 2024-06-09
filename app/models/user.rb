@@ -11,11 +11,9 @@ class User < ApplicationRecord
   has_one :bank_account, dependent: :destroy
   has_many :responses, dependent: :destroy
   has_many :surveys, through: :responses
+  has_many :transactions
   accepts_nested_attributes_for :wallet, allow_destroy: true
   accepts_nested_attributes_for :bank_account, allow_destroy: true
-
-  has_many :sent_transactions, class_name: 'Transaction', foreign_key: 'sender_id'
-  has_many :received_transactions, class_name: 'Transaction', foreign_key: 'receiver_id'
 
   after_create :create_wallet
 

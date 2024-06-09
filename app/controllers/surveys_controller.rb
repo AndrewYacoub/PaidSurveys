@@ -1,6 +1,7 @@
 # app/controllers/surveys_controller.rb
 class SurveysController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_survey, only: [:show, :edit, :update, :destroy]
   before_action :set_category, except: [:index, :show, :new, :edit, :create, :update, :destroy, :created]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
@@ -21,6 +22,8 @@ class SurveysController < ApplicationController
     @product = @category.products.find(params[:product_id])
     @survey = @product.surveys.find(params[:id])
     @questions = @survey.questions.includes(:choices)
+    @wallet = current_user.wallet
+    @bank_account = current_user.bank_accounts.first
   end
 
   def create
@@ -73,7 +76,7 @@ class SurveysController < ApplicationController
   end
 
   def set_survey
-    @survey = @product.surveys.find(params[:id])
+    @survey = Survey.find(params[:id])
   end
 
   def survey_params

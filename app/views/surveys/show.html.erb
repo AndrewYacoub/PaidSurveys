@@ -11,8 +11,9 @@
   </div>
 
   <h3 class="mt-5">Questions</h3>
-  <%= form_with(url: category_product_survey_responses_path(@category, @product, @survey), local: true) do |form| %>
-    <% @questions.each do |question| %>
+  <%= form_with(model: @response, url: category_product_survey_responses_path(@category, @product, @survey), local: true) do |form| %>
+
+    0<% @questions.each do |question| %>
       <div class="card mt-3">
         <div class="card-body">
           <h5 class="card-title"><%= question.content %></h5>
@@ -27,7 +28,93 @@
       </div>
     <% end %>
     <div class="mt-3 text-center">
-      <%= form.submit 'Submit your opinion', class: 'btn btn-primary' %>
+       <%= form.submit 'Submit your opinion', class: 'btn btn-primary', data: { toggle: "modal", target: "#paymentModal" } %>
     </div>
   <% end %>
+
+  <div class="mt-3 text-center">
+       <button  class='btn btn-primary' data-toggle="modal" data-target="#paymentModal"> Earn Money</button>
+  </div>
 </div>
+
+<!-- Payment Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="paymentModalLabel">Confirm Your Info</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="paymentForm">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-primary">
+              <input type="radio" name="payment_method" id="wallet" value="wallet" autocomplete="off" checked> Wallet transfer
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="payment_method" id="bank" value="bank" autocomplete="off"> Bank transfer
+            </label>
+          </div>
+          <div id="wallet-info">
+            <p><strong>Wallet Number:</strong> <%= @wallet.wallet_number %></p>
+            <p><strong>Balance:</strong> <%= @wallet.balance %></p>
+          </div>
+          <div id="bank-info" style="display: none;">
+            <div class="form-group">
+              <label for="bank_name">Bank Name</label>
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="earnMoneyBtn">Earn Money</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('input[name="payment_method"]').forEach(function(el) {
+      el.addEventListener('change', function() {
+        if (this.value === 'bank') {
+          document.getElementById('bank-info').style.display = 'block';
+          document.getElementById('wallet-info').style.display = 'none';
+        } else {
+          document.getElementById('bank-info').style.display = 'none';
+          document.getElementById('wallet-info').style.display = 'block';
+        }
+      });
+    });
+
+    document.getElementById('earnMoneyBtn').addEventListener('click', function() {
+      const formData = new FormData(document.getElementById('paymentForm'));
+      fetch('<%= earn_money_path %>', {
+        method: 'POST',
+        headers: {
+          'X-CSRF-Token': '<%= form_authenticity_token %>',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          transaction: {
+            payment_method: formData.get('payment_method'),
+            survey_id: '<%= @survey.id %>'
+          }
+        })
+      }).then(response => {
+        if (response.ok) {
+          location.reload();
+        } else {
+          response.json().then(data => {
+            alert('An error occurred: ' + data.errors.join(', '));
+          });
+        }
+      });
+    });
+  });
+</script>

@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get 'surveys/created', to: 'surveys#created', as: 'created_surveys'
   get 'statistics', to: 'statistics#show', as: 'statistics'
   get 'notifications', to: 'notifications#index', as: 'notifications'
-
+  post 'earn_money', to: 'transactions#create', as: 'earn_money'
+  resources :transactions, only: [:index]
   resources :profiles, only: [:show, :edit, :update]
   resources :bank_accounts, only: [:new, :create, :edit, :update]
   resources :wallets, only: [:new, :create, :edit, :update, :destroy]
