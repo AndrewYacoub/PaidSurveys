@@ -4,7 +4,7 @@
   <ul class="list-group">
     <% products.each do |product| %>
       <li class="list-group-item">
-        <%= link_to product.name, category_product_path(@category, product), class: 'list-group-item' %>
+        <h1><%= link_to product.name, category_product_path(@category, product), class: 'list-group-item' %> </h1>
       </li>
     <% end %>
   </ul>

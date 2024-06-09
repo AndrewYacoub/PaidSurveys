@@ -1,0 +1,65 @@
+category_name,product_name,product_description,survey_title,survey_description,question_content,choice_content,response_content
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,Did you receive this product as a gift?,yes,300
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,Did you receive this product as a gift?,no,200
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,How did you first discover this product was available for purchase?,"Advertising - TV, newspaper, magazine, radio",100
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,How did you first discover this product was available for purchase?,Ad in another (product),50
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,How did you first discover this product was available for purchase?,Friends/Family,150
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,How did you first discover this product was available for purchase?,Read a magazine article,110
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,How did you first discover this product was available for purchase?,Through the mail,40
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,How did you first discover this product was available for purchase?,Saw it in the store,50
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,What is the one reason you purchased this (product)?,Someone asked for it,20
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,What is the one reason you purchased this (product)?,Makes a great gift,100
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,What is the one reason you purchased this (product)?,Own other (products) and wanted more,50
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,What is the one reason you purchased this (product)?,Good for the whole family,80
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,What is the one reason you purchased this (product)?,I like the (product),150
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,What is the one reason you purchased this (product)?,Price/Good value,100
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,"Whether or not you know about [Product], how favorable is your overall reaction?",Poor,25
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,"Whether or not you know about [Product], how favorable is your overall reaction?",Fair,10
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,"Whether or not you know about [Product], how favorable is your overall reaction?",Good,250
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,"Whether or not you know about [Product], how favorable is your overall reaction?",Very good,100
+Healthcare,Shampoo beauty,Shampoo for hair strength,survey 1,This survey about the product quality,"Whether or not you know about [Product], how favorable is your overall reaction?",Excellent,115
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How often do you use online banking services?,Never,50
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How often do you use online banking services?,rarely,80
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How often do you use online banking services?,sometimes,100
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How often do you use online banking services?,often,200
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How often do you use online banking services?,always,370
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,Which's the important digital banking features do you use?,Mobile banking app,200
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,Which's the important digital banking features do you use?,Online bill pay,100
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,Which's the important digital banking features do you use?,e-Transfer,150
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,Which's the important digital banking features do you use?,ATM services,300
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,Which's the important digital banking features do you use?,None of the above,50
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How satisfied are you with the usability of your bank's mobile app?,Very dissatisfied,80
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How satisfied are you with the usability of your bank's mobile app?,Dissatisfied,100
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How satisfied are you with the usability of your bank's mobile app?,Neutral,120
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How satisfied are you with the usability of your bank's mobile app?,Satisfied,300
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How satisfied are you with the usability of your bank's mobile app?,Very satisfied,200
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,What concerns do you have about using digital banking services?,Security,300
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,What concerns do you have about using digital banking services?,Privacy,350
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,What concerns do you have about using digital banking services?,Ease of use,100
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,What concerns do you have about using digital banking services?,Customer support,40
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,What concerns do you have about using digital banking services?,None,10
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How likely are you to recommend your bank's digital services to a friend or family member?,Not likely at all,50
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How likely are you to recommend your bank's digital services to a friend or family member?,Unlikely,100
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How likely are you to recommend your bank's digital services to a friend or family member?,Neutral,150
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How likely are you to recommend your bank's digital services to a friend or family member?,Likely,300
+Banking,Digital technology in the banking system,The best digital banking system,survey 1,This survey about the product quality,How likely are you to recommend your bank's digital services to a friend or family member?,Very likely,200
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,"When choosing hair care products, which of the following factors matter to you?",Convenience,200
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,"When choosing hair care products, which of the following factors matter to you?",Availability,250
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,"When choosing hair care products, which of the following factors matter to you?",Price,50
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,"When choosing hair care products, which of the following factors matter to you?",Brand,100
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,"When choosing hair care products, which of the following factors matter to you?",Friend's recommendation,200
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,Which of the following factors did you find in this product?,Convenience,300
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,Which of the following factors did you find in this product?,Availability,250
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,Which of the following factors did you find in this product?,Price,150
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,Which of the following factors did you find in this product?,Brand,50
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,Which of the following factors did you find in this product?,Friend's recommendation,50
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,From which of the following sources were you able to learn about this product?,Sales people,250
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,From which of the following sources were you able to learn about this product?,Friends or family,200
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,From which of the following sources were you able to learn about this product?,Cosmetologist,100
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,From which of the following sources were you able to learn about this product?,Television,200
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,From which of the following sources were you able to learn about this product?,Magazines,50
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,To what extent do you trust this product?,very confident,300
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,To what extent do you trust this product?,confident,250
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,To what extent do you trust this product?,I trust to some extent,100
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,To what extent do you trust this product?,I do not trust,80
+Healthcare,Black hair oil,Oil for hair failing treatment,survey 2,This survey about the product quality,To what extent do you trust this product?,I don't trust at all,70

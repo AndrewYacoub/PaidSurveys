@@ -7,7 +7,6 @@ document.addEventListener('turbolinks:load', () => {
           document.getElementById('product-details').innerHTML = xhr.responseText;
         } else {
           document.getElementById('products-list').innerHTML = xhr.responseText;
-          document.getElementById('product-details').innerHTML = '<div class="alert alert-info">Select a product to see its details.</div>';
         }
       });
     });
