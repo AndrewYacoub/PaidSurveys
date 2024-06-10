@@ -44,23 +44,15 @@
     <h3>Categories we target to survey</h3>
     <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
-
+  <%= link_to 'New Category', new_category_path, class: 'btn btn-primary text-white mb-3' %>
   <div class="d-flex  mt-4">
     <div class="d-flex flex-fill mx-2">
       <% @categories.each do |category| %>
-        <%= link_to category.name, show_products_category_path(category), remote: true, class: 'btn btn-outline-secondary mx-1' %>
+          <%= link_to category.name, category_path(category), class: 'btn btn-outline-secondary mx-1' %>
       <% end %>
     </div>
   </div>
-
-  <div class="row mt-4">
-    <div class="col-md-12">
-      <div id="products-list">
-        <%= render partial: 'products', locals: { products: @products } %>
-      </div>
-    </div>
-  </div>
-
+  
   <div class="mt-5">
     <div class="card category-card">
       <div class="card-body">

@@ -1,4 +1,4 @@
-<%= form_with(model: [@category, @product, @survey], local: true, url: category_product_surveys_path(@category, @product)) do |form| %>
+<%= form_with(model: [@category, @product, @survey], local: true, url: category_product_survey_path(@category, @product, @survey)) do |form| %>
   <% if @survey.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>

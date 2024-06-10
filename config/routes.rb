@@ -11,9 +11,6 @@ Rails.application.routes.draw do
   resources :wallets, only: [:new, :create, :edit, :update, :destroy]
   resources :transactions, only: [:index, :show, :new, :create]
   resources :categories do 
-    member do
-      get 'show_products'
-    end
     resources :products do
       resources :surveys do
         resources :responses, only: [:create]

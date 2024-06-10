@@ -1,6 +1,6 @@
 # app/controllers/categories_controller.rb
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -42,14 +42,6 @@ class CategoriesController < ApplicationController
     redirect_to categories_url, notice: 'Category was successfully destroyed.'
   end
   
-  def show_products
-    @category = Category.find(params[:id])
-    @products = @category.products
-
-    respond_to do |format|
-      format.js
-    end
-  end
   
   private
 

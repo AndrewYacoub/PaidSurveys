@@ -2,7 +2,7 @@
 class SurveysController < ApplicationController
   before_action :authenticate_user!
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
-  before_action :set_category, except: [:index, :show, :edit, :create, :update, :destroy, :created]
+  before_action :set_category, except: [:index, :show, :created, :create]
   before_action :set_product, only: [:new, :show, :edit, :update, :destroy]
 
   def index
@@ -23,6 +23,11 @@ class SurveysController < ApplicationController
     @questions = @survey.questions.includes(:choices)
     @wallet = current_user.wallet
     @bank_account = current_user.bank_accounts.first
+    @responses = current_user.responses.where(survey: @survey).pluck(:choice_id) # Assuming responses have choice_id
+
+    @survey_filled_out = @responses.any?
+    @transaction = Transaction.find_by(survey_id: @survey.id, user_id: @survey.user_id)
+    @completed_transaction = @transaction.status if @transaction
   end
 
   def create
@@ -40,8 +45,7 @@ class SurveysController < ApplicationController
   end
 
  def created
-    @surveys = current_user.surveys
-
+    @surveys = Survey.where(user_id: current_user.id)   
     if params[:search].present?
       @surveys = @surveys.where('title LIKE ? OR product_name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
     end
@@ -54,15 +58,18 @@ class SurveysController < ApplicationController
 
   def update
     if @survey.update(survey_params)
-      redirect_to category_product_survey_path(@category, @product, @survey), notice: 'Survey was successfully updated.'
+      redirect_to created_surveys_path, notice: 'Survey was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
-    @survey.destroy
-    redirect_to category_product_surveys_path(@category, @product), notice: 'Survey was successfully destroyed.'
+    if @survey.delete
+      redirect_to created_surveys_path, notice: 'Survey was successfully destroyed.'
+    else
+      redirect_to created_surveys_path, alert: 'Failed to destroy survey.'
+    end
   end
 
   private
@@ -80,7 +87,7 @@ class SurveysController < ApplicationController
   end
 
   def survey_params
-    params.require(:survey).permit(:title,:target_group, :about_publisher, :description, :reward, :start_date, :end_date, :active, questions_attributes: [:id, :content, :_destroy])
+    params.require(:survey).permit(:title, :description, :about_publisher, :target_group, :reward, :start_date, :end_date, :active, questions_attributes: [:id, :content, :_destroy, choices_attributes: [:id, :content, :_destroy]])
   end
 
   def response_params

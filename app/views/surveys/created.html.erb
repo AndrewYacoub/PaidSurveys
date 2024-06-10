@@ -15,7 +15,6 @@
           <th>Survey Name</th>
           <th>Product Name</th>
           <th>Target Group</th>
-          <th>Status</th>
           <th>Price</th>
           <th>Actions</th>
         </tr>
@@ -28,7 +27,6 @@
             <td><%= survey.end_date %></td>
             <td><%= survey.title %></td>
             <td><%= survey.product.name %></td>
-            <td><%= survey.product.target_group %></td>
             <td><%= survey.active ? 'Activated' : 'Deactivated' %></td>
             <td><%= survey.reward %></td>
             <td>

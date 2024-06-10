@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_09_210202) do
+ActiveRecord::Schema.define(version: 2024_06_10_104947) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -158,16 +158,16 @@ ActiveRecord::Schema.define(version: 2024_06_09_210202) do
   end
 
   add_foreign_key "bank_accounts", "users"
-  add_foreign_key "choices", "questions"
+  add_foreign_key "choices", "questions", on_delete: :cascade
   add_foreign_key "notifications", "users"
   add_foreign_key "opinions", "surveys"
   add_foreign_key "opinions", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "profiles", "users"
-  add_foreign_key "questions", "surveys"
+  add_foreign_key "questions", "surveys", on_delete: :cascade
   add_foreign_key "responses", "choices"
   add_foreign_key "responses", "questions"
-  add_foreign_key "responses", "surveys"
+  add_foreign_key "responses", "surveys", on_delete: :cascade
   add_foreign_key "responses", "users"
   add_foreign_key "surveys", "categories"
   add_foreign_key "surveys", "products"
