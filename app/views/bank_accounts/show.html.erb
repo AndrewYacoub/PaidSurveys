@@ -1,0 +1,16 @@
+<!-- app/views/bank_accounts/show.html.erb -->
+<h1>Bank Account Details</h1>
+
+<p>
+  <strong>Account Number:</strong>
+  <%= @bank_account.account_number %>
+</p>
+
+<p>
+  <strong>Bank Name:</strong>
+  <%= @bank_account.bank_name %>
+</p>
+
+<%= link_to 'Edit', edit_bank_account_path(@bank_account), class: 'btn btn-secondary text-white' %>
+<%= link_to 'Back', bank_accounts_path, class: 'btn btn-primary text-white' %>
+<%= link_to 'Delete', bank_accounts_path(@bank_account), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

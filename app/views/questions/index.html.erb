@@ -1,6 +1,6 @@
 <!-- app/views/questions/index.html.erb -->
 <h1>Questions for <%= @survey.title %></h1>
-<%= link_to 'New Question', new_category_product_survey_question_path(@category, @product, @survey), class: 'btn btn-primary' %>
+<%= link_to 'New Question', new_category_product_survey_question_path(@category, @product, @survey), class: 'btn btn-primary text-white' %>
 
 <table class="table">
   <thead>
@@ -20,4 +20,4 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Back to Survey', category_product_survey_path(@category, @product, @survey), class: 'btn btn-secondary' %>
+<%= link_to 'Back to Survey', category_product_survey_path(@category, @product, @survey), class: 'btn btn-secondary text-white' %>

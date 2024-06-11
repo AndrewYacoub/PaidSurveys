@@ -1,12 +1,55 @@
- <style>
-    .content {
-      padding: 20px;
-      margin-top: 56px; /* Adjust based on navbar height */
-    }
-  </style>
+<style>
+  .content {
+    padding: 20px;
+    margin-top: 56px; /* Adjust based on navbar height */
+  }
+  .table-container {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  .table thead th {
+    background-color: #f8f9fa;
+    color: #343a40;
+  }
+  .table tbody td {
+    vertical-align: middle;
+  }
+  .table .btn {
+    margin: 2px;
+  }
+  .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: #fff;
+  }
+  .btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+  }
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+  }
+  .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+  .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+  }
+  .btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+  }
+</style>
+
 <div class="container mt-4">
-    <h2>All Surveys</h2>
-    <table class="table table-bordered">
+  <h2>All Surveys</h2>
+  <div class="table-container">
+    <table class="table table-bordered table-hover">
       <thead>
         <tr>
           <th>ID</th>
@@ -39,3 +82,4 @@
       </tbody>
     </table>
   </div>
+</div>

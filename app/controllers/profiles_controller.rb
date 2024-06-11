@@ -1,4 +1,3 @@
-# app/controllers/profiles_controller.rb
 class ProfilesController < ApplicationController
     before_action :authenticate_user!
   
@@ -22,7 +21,7 @@ class ProfilesController < ApplicationController
     private
   
     def user_params
-      params.require(:user).permit( :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :age, :occupation, :gender, :password, :password_confirmation)
     end
   end
   

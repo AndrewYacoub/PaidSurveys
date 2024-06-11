@@ -10,18 +10,19 @@ class WalletsController < ApplicationController
   def create
     @wallet = current_user.build_wallet(wallet_params)
     if @wallet.save
-      redirect_to profile_path, notice: 'Wallet was successfully created.'
+      redirect_to payment_methods_path, notice: 'Wallet was successfully created.'
     else
       render :new
     end
   end
+
 
   def edit
   end
 
   def update
     if @wallet.update(wallet_params)
-      redirect_to profile_path, notice: 'Wallet was successfully updated.'
+      redirect_to payment_methods_path, notice: 'Wallet was successfully updated.'
     else
       render :edit
     end
@@ -29,7 +30,7 @@ class WalletsController < ApplicationController
 
   def destroy
     @wallet.destroy
-    redirect_to profile_path, notice: 'Wallet was successfully deleted.'
+    redirect_to payment_methods_path, notice: 'Wallet was successfully deleted.'
   end
 
   private

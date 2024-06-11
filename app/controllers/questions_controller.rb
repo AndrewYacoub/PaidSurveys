@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
   def create
     @question = @survey.questions.build(question_params)
     if @question.save
-      redirect_to category_product_survey_questions_path(@category, @product, @survey), notice: 'Question was successfully created.'
+      redirect_to category_product_survey_question_choices_path(@category, @product, @survey, @question), notice: 'Question was successfully created.'
     else
       render :new
     end

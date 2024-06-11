@@ -1,20 +1,86 @@
-<!-- app/views/questions/_form.html.erb -->
-<%= form_with(model: [@category, @product, @survey, question], local: true) do |form| %>
-  <% if question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
-      <ul>
-        <% question.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<style>
+  .question-form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  .question-form-header {
+    font-size: 2rem;
+    color: #343a40;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-group label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #495057;
+  }
+  .form-control {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+  }
+  .actions {
+    text-align: center;
+  }
+  .btn-primary, .btn-secondary {
+    margin-top: 20px;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    text-align: center;
+    display: inline-block;
+    width: auto;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+  }
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+</style>
+
+<div class="question-form-container">
+  <h1 class="question-form-header">New Question for <%= @survey.title %></h1>
+  <%= form_with(model: [@category, @product, @survey, question], local: true) do |form| %>
+    <% if question.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+        <ul>
+          <% question.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= form.label :content %>
+      <%= form.text_area :content, class: 'form-control' %>
+    </div>
+    <div class="actions">
+      <%= form.submit 'Create Question', class: 'btn btn-primary text-white' %>
+      <%= link_to 'Back to Questions', category_product_survey_path(@category, @product, @survey), class: 'btn btn-secondary text-white' %>
     </div>
   <% end %>
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

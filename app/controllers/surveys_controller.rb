@@ -38,7 +38,7 @@ class SurveysController < ApplicationController
     @survey.user = current_user
 
     if @survey.save
-      redirect_to [@category, @product, @survey], notice: 'Survey was successfully created.'
+      redirect_to created_surveys_path, notice: 'Survey was successfully created.'
     else
       render :new
     end
@@ -65,7 +65,8 @@ class SurveysController < ApplicationController
   end
 
   def destroy
-    if @survey.delete
+    @survey.responses.destroy
+    if @survey.destroy
       redirect_to created_surveys_path, notice: 'Survey was successfully destroyed.'
     else
       redirect_to created_surveys_path, alert: 'Failed to destroy survey.'

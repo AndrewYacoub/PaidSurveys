@@ -1,0 +1,26 @@
+<!-- app/views/bank_accounts/index.html.erb -->
+<h1>My Bank Accounts</h1>
+
+<%= link_to 'Add New Bank Account', new_bank_account_path, class: 'btn btn-primary text-white' %>
+
+<table class="table mt-3">
+  <thead>
+    <tr>
+      <th>Account Number</th>
+      <th>Bank Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bank_accounts.each do |bank_account| %>
+      <tr>
+        <td><%= bank_account.account_number %></td>
+        <td><%= bank_account.bank_name %></td>
+        <td>
+          <%= link_to 'Edit', edit_bank_accounts_path(bank_account), class: 'btn btn-secondary text-white' %>
+          <%= link_to 'Delete', bank_account, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

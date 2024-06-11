@@ -1,34 +1,79 @@
-  <style>
-    .content {
-      margin-left: 250px;
-      padding: 20px;
-    }
-  </style>
-<div class="container mt-4">
-    <h2>Payment Methods</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <h3>Bank Account</h3>
-        <% if @bank_account %>
-          <p><strong>Bank Name:</strong> <%= @bank_account.bank_name %></p>
-          <p><strong>Account Number:</strong> <%= @bank_account.account_number %></p>
-          <%= link_to 'Edit Bank Account', new_bank_account_path, class: 'btn btn-primary' %>
-        <% else %>
-          <p>No bank account information available.</p>
-          <%= link_to 'Add Bank Account', new_bank_account_path, class: 'btn btn-primary' %>
-        <% end %>
+<style>
+  .content {
+    margin-left: 250px;
+    padding: 20px;
+  }
+  .payment-methods-container {
+    margin-top: 40px;
+  }
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 10px;
+  }
+  .card-header {
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .card-body {
+    padding: 20px;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
+    width: 100%;
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+</style>
+
+<div class="container payment-methods-container">
+  <h2 class="text-center">Payment Methods</h2>
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Bank Account
+        </div>
+        <div class="card-body">
+          <% if @bank_account %>
+            <p><strong>Bank Name:</strong> <%= @bank_account.bank_name %></p>
+            <p><strong>Account Number:</strong> <%= @bank_account.account_number %></p>
+            <p><strong>IBAN:</strong> <%= @bank_account.iban %></p>
+            <p><strong>Swift Code:</strong> <%= @bank_account.swift_code %></p>
+            <%= link_to 'Add Bank Account instead', new_bank_account_path, class: 'btn btn-primary text-white' %>
+          <% else %>
+            <p>No bank account information available.</p>
+            <%= link_to 'Add Bank Account', new_bank_account_path, class: 'btn btn-primary text-white' %>
+          <% end %>
+        </div>
       </div>
-      <div class="col-md-6">
-        <h3>Wallet</h3>
-        <% if @wallet %>
-          <p><strong>Provider:</strong> <%= @wallet.provider %></p>
-          <p><strong>Wallet Number:</strong> <%= @wallet.wallet_number %></p>
-          <p><strong>Balance:</strong> <%= @wallet.balance %></p>
-          <%= link_to 'Edit Wallet', edit_wallet_path(@wallet), class: 'btn btn-primary' %>
-        <% else %>
-          <p>No wallet information available.</p>
-          <%= link_to 'Add Wallet', new_wallet_path, class: 'btn btn-primary' %>
-        <% end %>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Wallet
+        </div>
+        <div class="card-body">
+          <% if @wallet %>
+            <p><strong>Provider:</strong> <%= @wallet.provider %></p>
+            <p><strong>Wallet Number:</strong> <%= @wallet.wallet_number %></p>
+            <p><strong>Balance:</strong> <%= @wallet.balance %></p>
+            <%= link_to 'Edit Wallet', edit_wallet_path(@wallet), class: 'btn btn-primary text-white' %>
+          <% else %>
+            <p>No wallet information available.</p>
+            <%= link_to 'Add Wallet', new_wallet_path, class: 'btn btn-primary text-white' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+</div>

@@ -1,54 +1,107 @@
-<%= form_with(model: [@category, @product, @survey], local: true, url: category_product_survey_path(@category, @product, @survey)) do |form| %>
-  <% if @survey.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
-      <ul>
-        <% @survey.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<style>
+  .survey-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  .survey-header {
+    font-size: 2rem;
+    color: #343a40;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .btn-back {
+    margin-right: 10px;
+  }
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+</style>
+
+<div class="survey-container">
+  <h1 class="survey-header">New Survey</h1>
+  <%= form_with(model: [@category, @product, @survey], local: true) do |form| %>
+    <% if @survey.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+        <ul>
+          <% @survey.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :about_publisher %>
+      <%= form.text_area :about_publisher, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :target_group %>
+      <%= form.text_area :target_group, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :reward %>
+      <%= form.number_field :reward, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :start_date %>
+      <%= form.datetime_select :start_date, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :end_date %>
+      <%= form.datetime_select :end_date, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :active %>
+      <%= form.check_box :active %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Save", class: "btn btn-primary text-white" %>
+      <%= link_to 'Back', category_product_path(@category, @product), class: 'btn btn-secondary text-white btn-back' %>
     </div>
   <% end %>
-
-  <div class="form-group">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :description %>
-    <%= form.text_area :description, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :about_publisher %>
-    <%= form.text_area :about_publisher, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :target_group %>
-    <%= form.text_area :target_group, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :reward %>
-    <%= form.number_field :reward %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :start_date %>
-    <%= form.datetime_select :start_date, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :end_date %>
-    <%= form.datetime_select :end_date, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :active %>
-    <%= form.check_box :active %>
-  </div>
-
-  <%= form.submit "Save", class: "btn btn-primary" %>
-<% end %>
+</div>

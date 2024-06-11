@@ -1,32 +1,90 @@
-<!-- app/views/bank_accounts/_form.html.erb -->
-<%= form_with(model: @bank_account, local: true) do |form| %>
-  <% if @bank_account.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bank_account.errors.count, "error") %> prohibited this bank account from being saved:</h2>
-      <ul>
-        <% @bank_account.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<style>
+  .form-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+  .form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+  }
+  .form-group label {
+    font-weight: bold;
+  }
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .form-actions {
+    text-align: center;
+  }
+  .form-actions input[type="submit"] {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .form-actions input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  .btn-secondary {
+    background-color: #6c757d;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+</style>
+
+<div class="form-container">
+  <h2>New Bank Account</h2>
+  <%= form_with(model: @bank_account, local: true, url: bank_accounts_path(@bank_account)) do |form| %>
+    <% if @bank_account.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@bank_account.errors.count, "error") %> prohibited this bank account from being saved:</h2>
+        <ul>
+          <% @bank_account.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :bank_name %>
+      <%= form.text_field :bank_name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.label :account_number %>
+      <%= form.text_field :account_number, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.label :iban %>
+      <%= form.text_field :iban, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= form.label :swift_code %>
+      <%= form.text_field :swift_code, class: 'form-control' %>
+    </div>
+    <div class="form-actions">
+      <%= form.submit 'Create Bank account', class: 'btn btn-primary text-white' %>
+      <%= link_to 'Back', bank_accounts_path, class: 'btn btn-secondary text-white' %>
     </div>
   <% end %>
-  <div class="field">
-    <%= form.label :bank_name %>
-    <%= form.text_field :bank_name %>
-  </div>
-  <div class="field">
-    <%= form.label :account_number %>
-    <%= form.text_field :account_number %>
-  </div>
-  <div class="field">
-    <%= form.label :iban %>
-    <%= form.text_field :iban %>
-  </div>
-  <div class="field">
-    <%= form.label :swift_code %>
-    <%= form.text_field :swift_code %>
-  </div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

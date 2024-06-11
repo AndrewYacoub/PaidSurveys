@@ -1,4 +1,3 @@
-# app/controllers/statistics_controller.rb
 class StatisticsController < ApplicationController
     before_action :authenticate_user!
   

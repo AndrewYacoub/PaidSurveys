@@ -1,21 +1,76 @@
-<!-- app/views/products/show.html.erb -->
+<style>
+  .card-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.list-group-item {
+  padding: 1rem 1.5rem;
+}
+
+.list-group-item h5 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn {
+  color: white;
+}
+
+.list-group-item {
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa; /* Change this color to your desired hover background color */
+  color: #007bff; /* Ensure the text color remains consistent */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+</style>
 <div class="container mt-4">
-  <div class="card">
+  <div class="card shadow-lg p-3 mb-5 bg-white rounded">
     <div class="card-body">
-      <h2><%= @product.name %></h2>
-      <p><%= @product.description %></p>
+      <h2 class="card-title display-4"><%= @product.name %></h2>
+      <p class="lead"><%= @product.description %></p>
       <h4>Price</h4>
-      <p><%= @product.price %> $</p>
-      <%= link_to 'Back to Category', categories_path(@category), class: 'btn btn-secondary' %>
+      <p class="font-weight-bold"><%= @product.price %> $</p>
+      <div class="d-flex justify-content-between">
+        <%= link_to 'Back to Category', categories_path(@category), class: 'btn btn-secondary text-white' %>
+        <%= link_to 'New Survey', new_category_product_survey_path(@product.category, @product), class: 'btn btn-primary text-white text-white' %>
+      </div>
     </div>
   </div>
-<%= link_to 'New Survey', new_category_product_survey_path(@product.category, @product), class: 'btn btn-primary' %>
-  <h3 class="mt-5">Available Surveys</h3>
-  <ul class="list-group mt-4">
-    <% @surveys.each do |survey| %>
-      <li class="list-group-item">
-        <%= link_to survey.title, category_product_survey_path(@category, @product, survey) %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="mt-5">
+    <h3 class="mb-3">Available Surveys</h3>
+    <ul class="list-group">
+      <% @surveys.each do |survey| %>
+        <li class="list-group-item list-group-item-action">
+          <h5 class="mb-1"><%= link_to survey.title, category_product_survey_path(@category, @product, survey), class: "text-decoration-none" %></h5>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
+
+

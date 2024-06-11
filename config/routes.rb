@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post 'earn_money', to: 'transactions#create', as: 'earn_money'
   resources :transactions, only: [:index]
   resources :profiles, only: [:show, :edit, :update]
-  resources :bank_accounts, only: [:new, :create, :edit, :update]
+  resources :bank_accounts, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :wallets, only: [:new, :create, :edit, :update, :destroy]
   resources :transactions, only: [:index, :show, :new, :create]
   resources :categories do 

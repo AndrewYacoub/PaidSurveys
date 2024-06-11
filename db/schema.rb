@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_10_104947) do
+ActiveRecord::Schema.define(version: 2024_06_10_113955) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2024_06_10_104947) do
     t.string "bank_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "iban"
+    t.string "swift_code"
     t.index ["user_id"], name: "index_bank_accounts_on_user_id"
   end
 

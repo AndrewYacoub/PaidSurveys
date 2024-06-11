@@ -1,21 +1,23 @@
 <div class="container mt-4">
-  <div class="card">
+  <div class="card shadow-lg p-3 mb-5 bg-white rounded">
     <div class="card-body">
-      <h5 class="card-title"><%= @survey.title %></h5>
-      <p class="card-text"><%= @survey.description %></p>
+      <h1 class="display-4"><%= @survey.title %></h1>
+      <p class="lead"><%= @survey.description %></p>
       <p><strong>Target Group:</strong> <%= @survey.target_group %></p>
       <p><strong>About Publisher:</strong> <%= @survey.about_publisher %></p>
-      <p><strong>Price:</strong> <%= @survey.reward %></p>
+      <p><strong>Price:</strong> $<%= @survey.reward %></p>
       <p><strong>Start at:</strong> <%= @survey.start_date %> <strong>End at:</strong> <%= @survey.end_date %></p>
       <p><strong>Active:</strong> <%= @survey.active ? 'Yes' : 'No' %></p>
-      <%= link_to 'Back to Product', category_product_path(@category, @product), class: 'btn btn-secondary' %>
+      <%= link_to 'Back to Product', category_product_path(@category, @product), class: 'btn btn-secondary text-white' %>
     </div>
   </div>
-<%= link_to 'Add Question', new_category_product_survey_question_path(@category, @product, @survey), class: 'btn btn-primary' %>
-
+  <%if current_user.id == @survey.user_id%>
+  <div class="d-flex justify-content-end mb-4">
+    <%= link_to 'Add Question', new_category_product_survey_question_path(@category, @product, @survey), class: 'btn btn-primary text-white' %>
+  </div>
+  <%end%>
   <h3 class="mt-5">Questions</h3>
   <%= form_with(model: @response, url: category_product_survey_responses_path(@category, @product, @survey), local: true) do |form| %>
-
     <% @questions.each do |question| %>
       <div class="card mt-3">
         <div class="card-body">
@@ -23,9 +25,10 @@
           <% question.choices.each do |choice| %>
             <div class="form-check">
               <% if @survey_filled_out %>
-               <%= radio_button_tag "response[#{question.id}]", choice.id, @responses.include?(choice.id), class: "form-check-input", id: "choice_#{choice.id}", disabled: @survey_filled_out %>
+                <%= radio_button_tag "response[#{question.id}]", choice.id, @responses.include?(choice.id), class: "form-check-input", id: "choice_#{choice.id}", disabled: @survey_filled_out %>
+              <% else %>
+                <%= form.radio_button "responses[#{question.id}][choice_id]", choice.id, class: 'form-check-input' %>
               <% end %>
-              <%= form.radio_button "responses[#{question.id}][choice_id]", choice.id, class: 'form-check-input' %>
               <%= form.label "responses_#{question.id}_#{choice.id}", choice.content, class: 'form-check-label' %>
               <%= form.hidden_field "responses[#{question.id}][question_id]", value: question.id %>
             </div>
@@ -35,18 +38,18 @@
     <% end %>
     <div class="mt-3 text-center">
       <% unless @survey_filled_out %>
-        <%= submit_tag "Submit your opinion", class: "btn btn-primary" %>
-     <%end%>
+        <%= submit_tag "Submit your opinion", class: "btn btn-primary text-white" %>
+      <% end %>
     </div>
   <% end %>
 
   <div class="mt-3 text-center">
     <% if @survey_filled_out && !@completed_transaction %>
-       <button  class='btn btn-primary' data-toggle="modal" data-target="#paymentModal"  id= "earn-money-button", style= "display:inline-block"  > Earn Money</button>
-    <%elsif @completed_transaction=="completed"%>
-    <%else%>
-           <button  class='btn btn-primary' data-toggle="modal" data-target="#paymentModal"  id= "earn-money-button", style= "display:none"  > Earn Money</button>
-    <%end%>
+      <button class="btn btn-primary text-white" data-toggle="modal" data-target="#paymentModal" id="earn-money-button" style="display:inline-block">Earn Money</button>
+    <% elsif @completed_transaction == "completed" %>
+    <% else %>
+      <button class="btn btn-primary text-white" data-toggle="modal" data-target="#paymentModal" id="earn-money-button" style="display:none">Earn Money</button>
+    <% end %>
   </div>
 </div>
 
@@ -62,11 +65,11 @@
       </div>
       <div class="modal-body">
         <form id="paymentForm">
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-primary">
+          <div class="btn-group btn-group-toggle w-100 mb-3" data-toggle="buttons">
+            <label class="btn btn-outline-primary active w-50">
               <input type="radio" name="payment_method" id="wallet" value="wallet" autocomplete="off" checked> Wallet transfer
             </label>
-            <label class="btn btn-primary">
+            <label class="btn btn-outline-primary w-50">
               <input type="radio" name="payment_method" id="bank" value="bank" autocomplete="off"> Bank transfer
             </label>
           </div>
@@ -77,18 +80,36 @@
           <div id="bank-info" style="display: none;">
             <div class="form-group">
               <label for="bank_name">Bank Name</label>
+              <input type="text" class="form-control" id="bank_name" name="bank_name">
             </div>
-
+            <div class="form-group">
+              <label for="account_number">Account Number</label>
+              <input type="text" class="form-control" id="account_number" name="account_number">
+            </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="earnMoneyBtn">Earn Money</button>
+        <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary text-white" id="earnMoneyBtn">Earn Money</button>
       </div>
     </div>
   </div>
 </div>
+
+<% if current_user.id == @survey.user_id%>
+ <% if @survey.present? %>
+    <% @survey.questions.each do |question| %>
+      <div class="chart-container">
+        <h3><%= question.content %> Statistics</h3>
+        <canvas id="questionChart_<%= question.id %>" class="chart"></canvas>
+      </div>
+    <% end %>
+  <% else %>
+    <p>Survey not found or no questions available.</p>
+  <% end %>
+<% end %>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -116,6 +137,8 @@
         body: JSON.stringify({
           transaction: {
             payment_method: formData.get('payment_method'),
+            bank_name: formData.get('bank_name'),
+            account_number: formData.get('account_number'),
             survey_id: '<%= @survey.id %>'
           }
         })
@@ -129,5 +152,34 @@
         }
       });
     });
+  });
+
+document.addEventListener('DOMContentLoaded', function() {
+  <% if @survey.present? %>
+      <% @survey.questions.each do |question| %>
+        const questionData_<%= question.id %> = {
+          labels: <%= raw question.choices.map(&:content).to_json %>,
+          datasets: [{
+            label: 'Responses per Choice',
+            data: <%= raw question.choices.map { |choice| choice.responses.count }.to_json %>,
+            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+            borderColor: 'rgba(255, 159, 64, 1)',
+            borderWidth: 1
+          }]
+        };
+
+        new Chart(document.getElementById('questionChart_<%= question.id %>'), {
+          type: 'bar',
+          data: questionData_<%= question.id %>,
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      <% end %>
+    <% end %>
   });
 </script>

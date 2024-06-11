@@ -1,17 +1,36 @@
-<!-- app/views/categories/show.html.erb -->
-<!-- app/views/categories/show.html.erb -->
-<h1><%= @category.name %></h1>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="display-4"><%= @category.name %></h1>
+    <div>
+      <%if current_user.admin==true %>
+      <%= link_to 'Edit', edit_category_path(@category), class: 'btn btn-warning text-white mr-2' %>
+      <%= link_to 'New Product', new_category_product_path(@category), class: 'btn btn-primary text-white text-white' %>
+      <%end%>
+      <%= link_to 'Back', categories_path, class: 'btn btn-secondary text-white mr-2' %>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_category_path(@category), class: 'btn btn-warning' %>
-<%= link_to 'Back', categories_path, class: 'btn btn-secondary' %>
-<%= link_to 'New Product', new_category_product_path(@category), class: 'btn btn-primary' %>
+  <h2 class="mt-4">Products</h2>
+  <div class="row">
+    <% @category.products.each do |product| %>
+      <div class="col-md-6 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title"><%= link_to product.name, category_product_path(@category, product), class: 'product-link' %></h3>
+            <p class="card-text"><%= product.description %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<h2>Products</h2>
-<ul>
-  <% @category.products.each do |product| %>
-    <li>
-      <h3><%= link_to product.name, category_product_path(@category, product) %></h3>
-      <p><%= product.description %></p>
-    </li>
-  <% end %>
-</ul>
+<style>
+  .product-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  .product-link:hover {
+    text-decoration: underline;
+  }
+</style>

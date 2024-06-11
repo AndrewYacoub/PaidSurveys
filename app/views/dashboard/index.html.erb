@@ -1,34 +1,75 @@
-  <style>
+<style>
 
-    .content {
-      margin-left: 250px;
-      padding: 20px;
-    }
-  </style>
-<div class="container mt-4">
+  .card {
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  .card-body {
+    padding: 20px;
+  }
+  .card-title {
+    font-size: 1.75rem;
+    color: #343a40;
+    font-weight: bold;
+  }
+  .card-text {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    margin-top: 10px;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  .header {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #343a40;
+    font-weight: bold;
+    text-align: center;
+  }
+  .product-info {
+    margin-bottom: 10px;
+    font-size: 1.125rem;
+  }
+  .product-info strong {
+    color: #343a40;
+  }
+  .no-surveys {
+    font-size: 1.25rem;
+    color: #6c757d;
+    text-align: center;
+    margin-top: 20px;
+  }
+</style>
 
-<div class="content">
-  <div id="products-surveyed">
-    <h2>Products I Surveyed</h2>
-    <% if @answered_surveys.any? %>
-      <% @answered_surveys.each do |survey| %>
-        <div class="card mt-4">
-          <div class="card-body">
-            <h5 class="card-title"><%= survey.title %></h5>
-            <p class="card-text"><%= survey.description %></p>
-            <p><strong>Price:</strong> <%= survey.reward %></p>
-            <p><strong>Start at:</strong> <%= survey.start_date %> <strong>End at:</strong> <%= survey.end_date %></p>
-            <p><strong>Submitted at:</strong> ........</p>
-            <%= link_to 'View Survey', category_product_survey_path(survey.product.category, survey.product, survey), class: 'btn btn-primary' %>
-          </div>
+<div class="container">
+  <h2 class="header">Products I Surveyed</h2>
+  <% if @answered_surveys.any? %>
+    <% @answered_surveys.each do |survey| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= survey.title %></h5>
+          <p class="card-text"><%= survey.description %></p>
+          <p class="product-info"><strong>Price:</strong> <%= survey.reward %></p>
+          <p class="product-info"><strong>Start at:</strong> <%= survey.start_date %></p>
+          <p class="product-info"><strong>End at:</strong> <%= survey.end_date %></p>
+          <p class="product-info"><strong>Submitted at:</strong> ........</p>
+          <%= link_to 'View Survey', category_product_survey_path(survey.product.category, survey.product, survey), class: 'btn btn-primary text-white' %>
         </div>
-      <% end %>
-    <% else %>
-      <p>You have not surveyed any products yet.</p>
+      </div>
     <% end %>
-  </div>
-  <!-- Additional tabs content goes here -->
-</div>
-
-
+  <% else %>
+    <p class="no-surveys">You have not surveyed any products yet.</p>
+  <% end %>
 </div>

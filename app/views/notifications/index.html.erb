@@ -1,58 +1,102 @@
-<div class="container mt-4">
-    <h2>Notifications</h2>
+<style>
+  .nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+  }
 
-    <ul class="nav nav-tabs" id="notificationTabs" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" id="categories-tab" data-toggle="tab" href="#categories" role="tab" aria-controls="categories" aria-selected="true">New Categories</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="products-tab" data-toggle="tab" href="#products" role="tab" aria-controls="products" aria-selected="false">New Products</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="surveys-tab" data-toggle="tab" href="#surveys" role="tab" aria-controls="surveys" aria-selected="false">New Surveys</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="filled-surveys-tab" data-toggle="tab" href="#filled-surveys" role="tab" aria-controls="filled-surveys" aria-selected="false">Filled Surveys</a>
-      </li>
-    </ul>
+  .nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #ffffff;
+    border-color: #dee2e6 #dee2e6 #fff;
+  }
 
-    <div class="tab-content" id="notificationTabsContent">
-      <div class="tab-pane fade show active" id="categories" role="tabpanel" aria-labelledby="categories-tab">
-        <div class="content mt-3">
-          <ul>
-            <% @categories.each do |category| %>
-              <li><%= category.name %> - Created at: <%= category.created_at %></li>
-            <% end %>
-          </ul>
-        </div>
+  .list-group-item {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+  }
+
+  .list-group-item h5 {
+    margin-bottom: 0.5rem;
+  }
+
+  .list-group-item span {
+    font-weight: 500;
+  }
+
+  .nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+  }
+</style>
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Notifications</h2>
+
+  <ul class="nav nav-tabs justify-content-center" id="notificationTabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="categories-tab" data-toggle="tab" href="#categories" role="tab" aria-controls="categories" aria-selected="true">New Categories</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="products-tab" data-toggle="tab" href="#products" role="tab" aria-controls="products" aria-selected="false">New Products</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="surveys-tab" data-toggle="tab" href="#surveys" role="tab" aria-controls="surveys" aria-selected="false">New Surveys</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="filled-surveys-tab" data-toggle="tab" href="#filled-surveys" role="tab" aria-controls="filled-surveys" aria-selected="false">Filled Surveys</a>
+    </li>
+  </ul>
+
+  <div class="tab-content pt-4" id="notificationTabsContent">
+    <div class="tab-pane fade show active" id="categories" role="tabpanel" aria-labelledby="categories-tab">
+      <div class="content mt-3">
+        <ul class="list-group">
+          <% @categories.each do |category| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span><%= category.name %></span>
+              <small class="text-muted">Created at: <%= category.created_at.strftime("%Y-%m-%d %H:%M:%S %Z") %></small>
+            </li>
+          <% end %>
+        </ul>
       </div>
-      <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">
-        <div class="content mt-3">
-          <ul>
-            <% @products.each do |product| %>
-              <li><%= product.name %> - Created at: <%= product.created_at %></li>
-            <% end %>
-          </ul>
-        </div>
+    </div>
+
+    <div class="tab-pane fade" id="products" role="tabpanel" aria-labelledby="products-tab">
+      <div class="content mt-3">
+        <ul class="list-group">
+          <% @products.each do |product| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span><%= product.name %></span>
+              <small class="text-muted">Created at: <%= product.created_at.strftime("%Y-%m-%d %H:%M:%S %Z") %></small>
+            </li>
+          <% end %>
+        </ul>
       </div>
-      <div class="tab-pane fade" id="surveys" role="tabpanel" aria-labelledby="surveys-tab">
-        <div class="content mt-3">
-          <ul>
-            <% @surveys.each do |survey| %>
-              <li><%= survey.title %> - Created at: <%= survey.created_at %></li>
-            <% end %>
-          </ul>
-        </div>
+    </div>
+
+    <div class="tab-pane fade" id="surveys" role="tabpanel" aria-labelledby="surveys-tab">
+      <div class="content mt-3">
+        <ul class="list-group">
+          <% @surveys.each do |survey| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span><%= survey.title %></span>
+              <small class="text-muted">Created at: <%= survey.created_at.strftime("%Y-%m-%d %H:%M:%S %Z") %></small>
+            </li>
+          <% end %>
+        </ul>
       </div>
-      <div class="tab-pane fade" id="filled-surveys" role="tabpanel" aria-labelledby="filled-surveys-tab">
-        <div class="content mt-3">
-          <ul>
-            <% @filled_surveys.each do |response| %>
-              <li><h5><%= response.user.name %> </h5> filled <%= response.survey.title %> - Submitted at: <%= response.created_at %></li>
-            <br>
-            <% end %>
-          </ul>
-        </div>
+    </div>
+
+    <div class="tab-pane fade" id="filled-surveys" role="tabpanel" aria-labelledby="filled-surveys-tab">
+      <div class="content mt-3">
+        <ul class="list-group">
+          <% @filled_surveys.each do |response| %>
+            <li class="list-group-item">
+              <h5 class="mb-1"><%= response.user.name %></h5>
+              filled <%= response.survey.title %>
+              <small class="text-muted d-block">Submitted at: <%= response.created_at.strftime("%Y-%m-%d %H:%M:%S %Z") %></small>
+            </li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
+</div>
